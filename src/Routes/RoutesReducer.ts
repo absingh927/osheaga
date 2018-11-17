@@ -10,6 +10,7 @@ export const handlers: ReducerMap<RouteInfoState> = {
       complete: Error
     }
   },
+  // updates state for results of full search or partial. Sets complete status accordingly.
   [constants.REQUESTING_ROUTES_STARTED]: (state:RouteInfoState, action: Action<RouteInfoState>) => {
     const currentSearchStatus = action.payload.complete ? Success : Loading;
     return {
@@ -23,6 +24,7 @@ export const handlers: ReducerMap<RouteInfoState> = {
       complete: currentSearchStatus
     }
   },
+  // updates departures, locations, operators and complete from poll search reuslts
   [constants.POLLING_ROUTES]: (state:RouteInfoState, action: Action<RouteInfoPollPayload>) => {
     const pollStatus = action.payload.searchComplete ? Success : Loading;
     return {

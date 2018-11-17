@@ -9,11 +9,14 @@ export const searchRoutes = () => {
     axios.get(constants.SEARCH_URL, constants.SEARCH_URL_HEADERS)
       .then(routes => {
 
+        // dispatch intial response from API, partial reuslts or full.
         dispatch({
           type: constants.REQUESTING_ROUTES_STARTED,
           payload: routes.data
         });
 
+        // call Poll Search if response said it was not finished.
+        // timer calls search every 4 seconds, until search is finished.
         if (!routes.data.complete) {
           const timer = setInterval(() => {
             pollSearch(dispatch, getState)
@@ -42,6 +45,8 @@ export const pollSearch = (dispatch: Dispatch, getState: () => AppState) => {
 
   return axios.get(`${constants.SEARCH_URL_POLL}&index=${routes.departures.length}`, constants.SEARCH_URL_HEADERS)
     .then(routes => {
+
+      // dispatch reuslts of search and if search has finished to update state.
       dispatch({
         type: constants.POLLING_ROUTES,
         payload: {

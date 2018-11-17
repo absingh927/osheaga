@@ -33,7 +33,6 @@ export default class RoutesWrapper extends React.PureComponent<RoutesWrapperProp
         {this.renderCard()}
       </>
     );
-    
   }
 
   private renderSubNav = () => {
@@ -59,6 +58,7 @@ export default class RoutesWrapper extends React.PureComponent<RoutesWrapperProp
     );
   };
 
+  // Returns and array of routes that only have the information needed to render UI. 
   private getFiltertedRoutes = (unfilteredRoutes: RouteInfoState) => {
     const filteredRoutes = unfilteredRoutes.departures.map(filteredRoute => ({
       route_id: filteredRoute.id,

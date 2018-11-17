@@ -50,6 +50,7 @@ class App extends React.PureComponent<AppComponent, AppComponentState>
   }
 
   private searchRoutes = () => {
+    // on lcik make call to API to grab routes.
     this.props.searchRoutes();
     this.setState({
       searchStarted: !this.state.searchStarted
@@ -87,6 +88,7 @@ class App extends React.PureComponent<AppComponent, AppComponentState>
   }
 
   private renderSearchResults = (searchComplete: CallStates) => {
+    // render depending on current status of search.
     if (searchComplete === Loading && this.state.searchStarted) {
       return (
         <Container>
