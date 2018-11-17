@@ -2,4 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #f8f9fa;
+  color:#495057;
+}
+
+body .jumbotron {
+  background-color:#e8f6ff;
+}
+
+body .jumbotron img{
+  max-width: 100%;
 }
